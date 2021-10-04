@@ -18,7 +18,7 @@ refs.searchForm.addEventListener('input', debounce(onSearch, 500));
 
 function onSearch(e) {
   if (e.target.value.trim().length === 0) {
-    alert({ text: 'Для тебя страна пустое место?!!!Нужны букавки!' });
+    alert({ text: 'Введите название страны !' });
     e.target.value = '';
     return;
   }
@@ -29,11 +29,11 @@ function quantityCheckCountries(country) {
   console.log(country);
   if (country.status === 404) {
     refs.cardContainer.innerHTML = '';
-    alert({ text: 'Can you be norm?!!' });
+    alert({ text: 'Некоректное название !' });
     return;
   } else if (country.length > 10) {
     refs.cardContainer.innerHTML = '';
-    error({ text: 'Please enter a more specific query!' });
+    error({ text: 'Пожалуйста, введите более конкретный запрос!' });
     return;
   } else if (country.length > 1) {
     refs.cardContainer.innerHTML = countriesListTpl(country);
@@ -45,7 +45,7 @@ function quantityCheckCountries(country) {
 }
 function onFetchError(err) {
   refs.cardContainer.innerHTML = '';
-  alert({ text: 'Come on baby, press the button!!' });
+  alert({ text: 'Нажмите на кнопку !' });
 }
 
 ////
